@@ -25,6 +25,13 @@ function Nav() {
   );
 }
 
+export const metadata = {
+  title: "Dashboard Layout",
+  description: "Dashboard Layout",
+  keywords: "Dashboard Layout",
+  url: "https://nextjs-13-plus.vercel.app/dashboard/layout",
+};
+
 function DashBoardLayout({ children }) {
   return (
     <main className="flex min-h-screen  min-w-full">
