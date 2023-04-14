@@ -1,18 +1,28 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
+import Users from "./components/Users";
 const inter = Inter({ subsets: ["latin"] });
 
-const fetchDummyData = async () => {
-  throw new Error("Dummy Error");
-  const res = await fetch("https://jsonplaceholder.typicode.com/photos", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
-};
+async function getAllUsers() {
+  try {
+    const res = await fetch("http://localhost:3000/api/users", {
+      cache: "no-store",
+    });
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.log({ error });
+  }
+}
 
 export default async function Home() {
-  await fetchDummyData();
-  return <div>APP entry Point</div>;
+  const allUsers = await getAllUsers();
+  console.log({ allUsers });
+
+  return (
+    <div>
+      <h2>Home</h2>
+      <Users {...{ allUsers }} />
+    </div>
+  );
 }
