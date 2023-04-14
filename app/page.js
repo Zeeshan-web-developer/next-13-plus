@@ -1,10 +1,17 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  return (
-   <div>APP entry Point</div>
-  )
+const fetchDummyData = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/photos", {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data;
+};
+
+export default async function Home() {
+  await fetchDummyData();
+  return <div>APP entry Point</div>;
 }
