@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 const fetchDummyData = async () => {
+  throw new Error("Dummy Error");
   const res = await fetch("https://jsonplaceholder.typicode.com/photos", {
     cache: "no-store",
   });
