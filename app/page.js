@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Users from "./components/Users";
 const inter = Inter({ subsets: ["latin"] });
+import ClientComponent from "./client/page";
+import ServerComponent from "./server/page";
 
 async function getAllUsers() {
   try {
@@ -23,6 +25,9 @@ export default async function Home() {
     <div>
       <h2>Home</h2>
       <Users {...{ allUsers }} />
+      <ClientComponent>
+        <ServerComponent />
+      </ClientComponent>
     </div>
   );
 }
